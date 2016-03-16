@@ -36,6 +36,12 @@ class DisplayLabel: UILabel {
             self.text = (digit as NSNumber).stringValue
         }
     }
+    
+    //add Dot
+    
+    func addDot() {
+        self.text = text! + "."
+    }
 
     // MARK: - Negative
 
@@ -53,5 +59,6 @@ class DisplayLabel: UILabel {
         }
         self.text = self.negative ? text.substringFromIndex(text.startIndex.advancedBy(1)) : "-" + text
     }
+    
 
 }

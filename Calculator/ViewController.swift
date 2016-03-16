@@ -44,6 +44,11 @@ class ViewController: UIViewController {
             try! self.core.addStep(+)
         case "-":
             try! self.core.addStep(-)
+        case "*":
+            try! self.core.addStep(*)
+        case "/":
+            try! self.core.addStep(/)
+        
         default:
             break
         }
@@ -51,6 +56,20 @@ class ViewController: UIViewController {
         self.displayLabel.clear()
     }
 
+    @IBAction func percentButtonClicked(sender: UIButton) {
+        try! self.core.addStep(/)
+        self.displayLabel.append(1)
+        self.displayLabel.append(0)
+        self.displayLabel.append(0)
+        try! self.core.addStep(self.displayLabel.floatValue)
+        self.displayLabel.floatValue = try! self.core.calculate()
+        self.resetCore()
+
+    }
+    @IBAction func dotButtonClicked(sender: UIButton) {
+        self.displayLabel.addDot()
+    }
+    
     @IBAction func calculateButtonClicked(sender: UIButton) {
         try! self.core.addStep(self.displayLabel.floatValue)
         self.displayLabel.floatValue = try! self.core.calculate()
